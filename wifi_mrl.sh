@@ -1,0 +1,1 @@
+/home/choisol/shell_executable/wifi/wifi_mrl.sh
