@@ -1,1 +1,1 @@
-/wifi/wifi_mrl.sh
+wifi/wifi_mrl.sh
