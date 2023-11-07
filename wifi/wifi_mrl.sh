@@ -1,6 +1,5 @@
 #!/bin/bash
 
-ls
 clear
 
 nmcli device wifi list
