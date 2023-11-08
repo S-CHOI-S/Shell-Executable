@@ -19,13 +19,23 @@ echo ""
 
 read -p $'\e[33m>> Wi-Fi name to be connected: \e[0m' wifi_name 
 
-echo -e ">> Trying to connect [\e[32m$wifi_name\e[0m]..."
-
 if [ -z "$wifi_name" ]; then
-	echo "\e[31m>> Wi-Fi name is empty!\e[0m"
+	echo -e "\e[31m>> Wi-Fi name is empty!\e[0m"
 else
-	nmcli device wifi connect $wifi_name password mrl9706534!
+	if [ "$wifi_name" = "iptime_mrl_flight_5G" ] || [ "$wifi_name" = "iptime_mrl_flight" ]; then
+		wifi_pw=mrl9706534!
+	elif [ "$wifi_name" = "iptime_mrl5G" ] || [ "$wifi_name" = "iptime_mrl" ];then
+		wifi_pw=mrl9706534
+	else
+		read -s -p $'>> Password for [\e[32m'$wifi_name$'\e[0m]: ' wifi_pw
+	fi
+
+	echo -e "\n>> Trying to connect [\e[32m$wifi_name\e[0m]..."
+	
+	nmcli device wifi connect $wifi_name password $wifi_pw
+	
 	connected_wifi=$(iwgetid -r)
+	
 	if [ "$wifi_name" = "$connected_wifi" ]; then
 		echo -e ">> Successed to connect [\e[32m$wifi_name\e[0m]!"
 	else
