@@ -31,4 +31,4 @@ echo -e "\e[33m[bag] New Rosbag File Name: $file_path\e[0m"
 
 set -e
 
-scp paletrone3@192.168.1.10:$file_path /home/choisol/dasom_ws ## 여기 바꿔
+scp paletrone3@192.168.1.10:$file_path /home/choisol/dasom_ws/src/dasom_bag/bag
